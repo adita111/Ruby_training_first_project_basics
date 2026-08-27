@@ -25,9 +25,3 @@ class RubyGemsApiClient
 
 end
 
-client = RubyGemsApiClient.new
-result=client.search('rails')
-
-result.each do |gem|
-  puts gem.name
-end
