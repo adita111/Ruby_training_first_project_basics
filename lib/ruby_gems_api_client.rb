@@ -4,8 +4,8 @@ require_relative 'gem_data'
 
 
 class RubyGemsApiClient
-  def initialize
-    @connection = Faraday.new(url:'https://rubygems.org')
+  def initialize(connection = nil)
+    @connection = connection || Faraday.new(url:'https://rubygems.org')
   end
 
   def show(name)

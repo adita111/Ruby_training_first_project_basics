@@ -19,6 +19,7 @@ class Program
       return ProgramResult.new('No argument after search',1) if @arguments[1].nil?
 
       gems = @api_client.search(@arguments[1])
+
       lines= gems.map do |gem|
         "#{gem.name} - #{gem.info}"
 
@@ -27,6 +28,8 @@ class Program
     else
               ProgramResult.new('Invalid command',1)
     end
+  rescue Faraday::TimeoutError
+    ProgramResult.new('Request timed out',1)
   end
 end
 
